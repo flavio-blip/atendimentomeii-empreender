@@ -1,1 +1,548 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conexão Material para Construção | Goiânia</title>
+    <!-- Google Fonts & Font Awesome -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
 
+        body {
+            background-color: #f9fafb;
+            color: #1e293b;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* header / navbar */
+        .navbar {
+            background-color: #0f172a;
+            color: white;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 16px;
+            padding-bottom: 16px;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.025em;
+        }
+        .logo span {
+            color: #fbbf24;
+            font-weight: 500;
+            font-size: 1rem;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+        .nav-links a {
+            color: #e2e8f0;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover {
+            color: #fbbf24;
+        }
+        .btn-contato {
+            background-color: #fbbf24;
+            color: #0f172a !important;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-weight: 600;
+        }
+        .btn-contato:hover {
+            background-color: #f59e0b;
+            color: #0f172a;
+        }
+
+        /* hero */
+        .hero {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            color: white;
+            padding: 60px 0 80px;
+        }
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+        .hero-content h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 24px;
+        }
+        .hero-content p {
+            font-size: 1.2rem;
+            color: #cbd5e1;
+            margin-bottom: 32px;
+            max-width: 500px;
+        }
+        .hero-stats {
+            display: flex;
+            gap: 32px;
+        }
+        .stat-item {
+            background: rgba(255,255,255,0.05);
+            padding: 16px 24px;
+            border-radius: 16px;
+            border-left: 4px solid #fbbf24;
+        }
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fbbf24;
+        }
+        .hero-image img {
+            width: 100%;
+            border-radius: 24px;
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.6);
+            border: 2px solid #334155;
+        }
+
+        /* seções genéricas */
+        section {
+            padding: 80px 0;
+        }
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            position: relative;
+            display: inline-block;
+        }
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 60%;
+            height: 4px;
+            background: #fbbf24;
+            margin-top: 8px;
+            border-radius: 4px;
+        }
+        .section-sub {
+            color: #475569;
+            margin-bottom: 48px;
+            font-size: 1.1rem;
+        }
+
+        /* cards produtos */
+        .produtos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            margin-top: 40px;
+        }
+        .produto-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.02);
+            transition: all 0.3s;
+            border: 1px solid #e9eef2;
+        }
+        .produto-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 30px -10px rgba(0,60,100,0.2);
+            border-color: #fbbf24;
+        }
+        .produto-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            background-color: #e2e8f0;
+        }
+        .produto-body {
+            padding: 24px;
+        }
+        .produto-body h3 {
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .produto-cnae {
+            background: #f1f5f9;
+            color: #334155;
+            padding: 6px 12px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 12px;
+        }
+
+        /* sobre / quem somos */
+        .sobre-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: center;
+        }
+        .sobre-texto p {
+            margin-bottom: 20px;
+            color: #334155;
+            font-size: 1.1rem;
+        }
+        .sobre-texto strong {
+            color: #0f172a;
+        }
+        .sobre-img img {
+            width: 100%;
+            border-radius: 24px;
+            box-shadow: 0 20px 30px -10px #cbd5e1;
+        }
+
+        .info-empresa {
+            background: #f1f5f9;
+            border-radius: 24px;
+            padding: 40px;
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 24px;
+            margin: 40px 0;
+        }
+        .info-bloco i {
+            color: #fbbf24;
+            font-size: 2rem;
+            margin-bottom: 16px;
+        }
+        .info-bloco h4 {
+            font-size: 1.2rem;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        .info-bloco p {
+            color: #475569;
+        }
+
+        /* política de privacidade (simplificada) */
+        .politica-box {
+            background: #f8fafc;
+            border-radius: 24px;
+            padding: 40px;
+            border: 1px solid #e2e8f0;
+        }
+        .politica-box h3 {
+            font-size: 1.6rem;
+            margin: 32px 0 16px;
+        }
+        .politica-box h3:first-of-type {
+            margin-top: 0;
+        }
+        .politica-box p {
+            color: #334155;
+            margin-bottom: 20px;
+        }
+
+        /* localização / mapa fake */
+        .mapa-card {
+            background: white;
+            border-radius: 24px;
+            padding: 32px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.02);
+            border: 1px solid #e9eef2;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+        }
+        .mapa-dados {
+            flex: 1;
+        }
+        .mapa-dados p {
+            margin: 16px 0;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+        }
+        .mapa-dados i {
+            width: 24px;
+            color: #fbbf24;
+        }
+        .mapa-img-placeholder {
+            flex: 1;
+            background: #d9e2ec;
+            border-radius: 20px;
+            height: 220px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200" fill="%2394a3b8"><rect width="300" height="200" /><text x="20" y="120" font-family="Inter" font-size="18" fill="%231e293b">📍 Av. Eli Alves Forte, 37</text><text x="20" y="150" fill="%230f172a" font-size="14">Goiânia - GO</text></svg>');
+            background-size: cover;
+        }
+
+        /* footer */
+        footer {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 48px 0 24px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 48px;
+            margin-bottom: 48px;
+        }
+        .footer-logo h3 {
+            color: white;
+            font-size: 1.8rem;
+        }
+        .footer-logo span {
+            color: #fbbf24;
+        }
+        .footer-links a {
+            display: block;
+            color: #cbd5e1;
+            text-decoration: none;
+            margin-bottom: 10px;
+        }
+        .footer-links a:hover {
+            color: #fbbf24;
+        }
+        .copyright {
+            border-top: 1px solid #334155;
+            padding-top: 24px;
+            text-align: center;
+        }
+
+        @media (max-width: 800px) {
+            .hero-grid, .sobre-grid, .footer-grid, .info-empresa {
+                grid-template-columns: 1fr;
+            }
+            .nav-links {
+                display: none;
+            }
+            .hero-content h2 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="container">
+        <div class="logo">
+            <h1>Conexão Material <span>para Construção LTDA</span></h1>
+        </div>
+        <div class="nav-links">
+            <a href="#home">Início</a>
+            <a href="#sobre">Quem Somos</a>
+            <a href="#produtos">Produtos</a>
+            <a href="#privacidade">Privacidade</a>
+            <a href="#contato" class="btn-contato">Contato</a>
+        </div>
+    </div>
+</nav>
+
+<!-- HERO / HOME -->
+<section class="hero" id="home">
+    <div class="container hero-grid">
+        <div class="hero-content">
+            <h2>Construa com <span style="color:#fbbf24;">confiança</span> em Goiânia</h2>
+            <p>Há mais de 10 anos fornecendo materiais de construção, ferragens e material elétrico com atendimento de qualidade.</p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-number">10+ anos</div>
+                    <div>experiência</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">R$ 80k</div>
+                    <div>capital social</div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-image">
+            <!-- imagem ilustrativa de loja de construção -->
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='400' viewBox='0 0 600 400'%3E%3Crect width='600' height='400' fill='%23334155'/%3E%3Crect x='80' y='120' width='440' height='180' fill='%23fbbf24' rx='12'/%3E%3Crect x='140' y='160' width='80' height='80' fill='%231e293b' rx='8'/%3E%3Crect x='260' y='160' width='80' height='80' fill='%231e293b' rx='8'/%3E%3Crect x='380' y='160' width='80' height='80' fill='%231e293b' rx='8'/%3E%3Ctext x='200' y='320' font-family='Inter' font-size='28' fill='white' font-weight='bold'%3EConexão%3C/text%3E%3C/svg%3E"
+                 alt="Loja de materiais de construção">
+        </div>
+    </div>
+</section>
+
+<!-- QUEM SOMOS -->
+<section id="sobre">
+    <div class="container">
+        <h2 class="section-title">Quem Somos</h2>
+        <p class="section-sub">Conheça a história da Conexão Material para Construção</p>
+
+        <div class="sobre-grid">
+            <div class="sobre-texto">
+                <p><strong>Conexão Material Para Construção LTDA</strong> — CNPJ 22.819.051/0001-82 — é uma microempresa goianiense fundada em <strong>07 de julho de 2015</strong>. Atuamos como matriz no setor de comércio varejista de materiais de construção em geral, sempre com foco em atender bem o cliente e oferecer produtos de qualidade.</p>
+                <p>Localizados no <strong>Residencial Eli Forte</strong>, levamos até você toda a linha de materiais para construção, reforma e acabamento. Somos optantes pelo Simples Nacional e temos como sócio-administrador <strong>Gabriel Guimaraes Xavier</strong>, que acompanha de perto o dia a dia da empresa.</p>
+                <p>Nosso compromisso é ser a sua conexão com os melhores produtos e preços justos em Goiânia.</p>
+            </div>
+            <div class="sobre-img">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='500' height='350' viewBox='0 0 500 350'%3E%3Crect width='500' height='350' fill='%23e2e8f0'/%3E%3Ccircle cx='250' cy='130' r='60' fill='%23fbbf24'/%3E%3Crect x='190' y='210' width='120' height='90' fill='%23264b6c' rx='8'/%3E%3Ctext x='150' y='300' font-family='Inter' font-size='28' fill='%230f172a'%3EEquipe%3C/text%3E%3C/svg%3E"
+                     alt="Equipe Conexão">
+            </div>
+        </div>
+
+        <!-- cards com dados do registro -->
+        <div class="info-empresa">
+            <div class="info-bloco">
+                <i class="fas fa-calendar-alt"></i>
+                <h4>Data de abertura</h4>
+                <p>07/07/2015 · 10 anos, 7 meses e 17 dias</p>
+            </div>
+            <div class="info-bloco">
+                <i class="fas fa-briefcase"></i>
+                <h4>Capital social</h4>
+                <p>R$ 80.000,00</p>
+            </div>
+            <div class="info-bloco">
+                <i class="fas fa-tag"></i>
+                <h4>Simples Nacional</h4>
+                <p>Desde 01/01/2025 · ME</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PRODUTOS (CNAES) -->
+<section id="produtos" style="background: #f1f5f9;">
+    <div class="container">
+        <h2 class="section-title">Nossos Produtos</h2>
+        <p class="section-sub">Trabalhamos com as principais categorias de materiais para construção, elétrica e ferragens.</p>
+
+        <div class="produtos-grid">
+            <div class="produto-card">
+                <div class="produto-img" style="background-image: url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'200\' viewBox=\'0 0 400 200\'%3E%3Crect width=\'400\' height=\'200\' fill=\'%233b82f6\'/%3E%3Ccircle cx=\'120\' cy=\'100\' r=\'30\' fill=\'%23fbbf24\'/%3E%3Ccircle cx=\'240\' cy=\'100\' r=\'30\' fill=\'%23fbbf24\'/%3E%3Crect x=\'160\' y=\'70\' width=\'40\' height=\'60\' fill=\'%23ffffff\'/%3E%3C/svg%3E')"></div>
+                <div class="produto-body">
+                    <h3>Construção em geral</h3>
+                    <p>Cimento, areia, brita, blocos, telhas, argamassas e tudo para sua obra.</p>
+                    <span class="produto-cnae">CNAE 47.44-0-99 (principal)</span>
+                </div>
+            </div>
+            <div class="produto-card">
+                <div class="produto-img" style="background-image: url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'200\' viewBox=\'0 0 400 200\'%3E%3Crect width=\'400\' height=\'200\' fill=\'%23f59e0b\'/%3E%3Cpath d=\'M120,140 L180,60 L240,140 Z\' fill=\'%231e293b\'/%3E%3Crect x=\'200\' y=\'80\' width=\'50\' height=\'70\' fill=\'%23a5b4cb\'/%3E%3C/svg%3E')"></div>
+                <div class="produto-body">
+                    <h3>Material elétrico</h3>
+                    <p>Fios, cabos, disjuntores, quadros, lâmpadas e iluminação completa.</p>
+                    <span class="produto-cnae">CNAE 47.42-3-00 (secundária)</span>
+                </div>
+            </div>
+            <div class="produto-card">
+                <div class="produto-img" style="background-image: url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' width=\'400\' height=\'200\' viewBox=\'0 0 400 200\'%3E%3Crect width=\'400\' height=\'200\' fill=\'%23999999\'/%3E%3Crect x=\'120\' y=\'60\' width=\'30\' height=\'100\' fill=\'%23c2410c\' rx=\'5\'/%3E%3Crect x=\'210\' y=\'30\' width=\'30\' height=\'130\' fill=\'%23c2410c\' rx=\'5\'/%3E%3C/svg%3E')"></div>
+                <div class="produto-body">
+                    <h3>Ferragens e ferramentas</h3>
+                    <p>Pregos, parafusos, dobradiças, martelos, furadeiras e muito mais.</p>
+                    <span class="produto-cnae">CNAE 47.44-0-01 (secundária)</span>
+                </div>
+            </div>
+        </div>
+
+        <p style="margin-top: 48px; background: white; padding: 24px; border-radius: 16px; border-left: 8px solid #fbbf24;">
+            <i class="fas fa-store" style="color: #fbbf24; margin-right: 10px;"></i> 
+            <strong>Atendemos também com vendas para construtoras e público geral. Consulte condições!
+        </p>
+    </div>
+</section>
+
+<!-- LOCALIZAÇÃO E CONTATO -->
+<section id="contato">
+    <div class="container">
+        <h2 class="section-title">Onde Estamos</h2>
+        <p class="section-sub">Visite nossa loja ou entre em contato</p>
+
+        <div class="mapa-card">
+            <div class="mapa-dados">
+                <p><i class="fas fa-map-pin"></i> <strong>Avenida Eli Alves Forte, 37 - Quadra 001 Lote 49</strong></p>
+                <p><i class="fas fa-city"></i> Residencial Eli Forte, Goiânia - GO, 74371-002</p>
+                <p><i class="fas fa-phone-alt"></i> (62) 3605-**** (ligue ou peça um contato)</p>
+                <p><i class="fas fa-envelope"></i> co****@****.com (acione via formulário)</p>
+                <p><i class="fas fa-clock"></i> Segunda a sexta: 08:00–18:00 | Sábado: 08:00–12:00</p>
+                <p><i class="fas fa-id-card"></i> CNPJ: 22.819.051/0001-82 · Matriz ativa desde 2015</p>
+                <div style="margin-top:24px">
+                    <a href="#" style="background: #fbbf24; padding: 12px 32px; border-radius: 40px; color: #0f172a; font-weight: bold; text-decoration: none; display: inline-block;">VER NO GOOGLE MAPS</a>
+                </div>
+            </div>
+            <div class="mapa-img-placeholder"></div>
+        </div>
+    </div>
+</section>
+
+<!-- POLÍTICA DE PRIVACIDADE -->
+<section id="privacidade" style="background: #ffffff;">
+    <div class="container">
+        <h2 class="section-title">Política de Privacidade</h2>
+        <p class="section-sub">A sua confiança é importante para nós</p>
+
+        <div class="politica-box">
+            <h3>📌 Dados que coletamos</h3>
+            <p>A Conexão Material Para Construção LTDA coleta informações fornecidas voluntariamente por você, como nome, e-mail e telefone, quando você solicita contato ou orçamento. Também podemos coletar dados automaticamente, como endereço IP e páginas acessadas, para melhorar sua experiência.</p>
+
+            <h3>🔐 Uso das informações</h3>
+            <p>Seus dados são utilizados para responder a solicitações, enviar comunicações sobre produtos e ofertas, e melhorar nosso atendimento. Não compartilhamos suas informações com terceiros sem sua autorização, exceto quando exigido por lei.</p>
+
+            <h3>🛡️ Segurança</h3>
+            <p>Adotamos medidas técnicas e organizacionais para proteger seus dados contra acesso não autorizado, perda ou violação. Mantemos os registros conforme a legislação brasileira (LGPD).</p>
+
+            <h3>📝 Seus direitos</h3>
+            <p>Você pode solicitar a correção, exclusão ou portabilidade dos seus dados a qualquer momento entrando em contato pelo e-mail da empresa.</p>
+
+            <p style="margin-top:32px"><i class="fas fa-shield-alt" style="color: #fbbf24;"></i> Esta política é válida a partir de 2025 e pode ser atualizada periodicamente.</p>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container footer-grid">
+        <div class="footer-logo">
+            <h3>Conexão <span>Material</span></h3>
+            <p style="margin-top: 16px;">Construindo confiança em Goiânia desde 2015.</p>
+            <p>Micro Empresa · Simples Nacional</p>
+        </div>
+        <div class="footer-links">
+            <h4 style="color: white; margin-bottom: 16px;">Navegue</h4>
+            <a href="#home">Início</a>
+            <a href="#sobre">Quem Somos</a>
+            <a href="#produtos">Produtos</a>
+            <a href="#privacidade">Privacidade</a>
+        </div>
+        <div class="footer-links">
+            <h4 style="color: white; margin-bottom: 16px;">Contato</h4>
+            <a href="#"><i class="fas fa-phone"></i> (62) 3605-****</a>
+            <a href="#"><i class="fas fa-envelope"></i> co****@****.com</a>
+            <a href="#"><i class="fab fa-instagram"></i> @conexaomaterial</a>
+        </div>
+    </div>
+    <div class="container copyright">
+        <p>© 2025 Conexao Material Para Construcao LTDA - CNPJ 22.819.051/0001-82. Todos os direitos reservados.</p>
+    </div>
+</footer>
+
+<!-- pequeno aviso de dados genéricos (telefone/e-mail ocultos conforme dados) -->
+<div style="background: #1e293b; color: #94a3b8; text-align: center; padding: 6px; font-size: 0.8rem;">
+    Empresa ativa · Razão social: Conexao Material Para Construcao LTDA · Sócio-adm: Gabriel Guimaraes Xavier
+</div>
+</body>
+</html>
